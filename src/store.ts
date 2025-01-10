@@ -16,6 +16,8 @@ export const useStore = create<State & Action>()(
   immer((set) => ({
     simpleMap: new Map<string, string>([["1", v7()]]),
     simpleMapSet: (newSimpleMap: SimpleMap) =>
-      set(() => ({ simpleMap: newSimpleMap })),
+      set((state) => {
+        state.simpleMap = newSimpleMap;
+      }),
   }))
 );
