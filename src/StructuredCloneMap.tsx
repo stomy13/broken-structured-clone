@@ -1,9 +1,12 @@
 import { v7 } from "uuid";
 import { useStore } from "./store";
+import { Snackbar } from "./SnackBar";
+import { useState } from "react";
 
 export const StructuredCloneMap = () => {
   const simpleMap = useStore((state) => state.simpleMap);
   const simpleMapSet = useStore((state) => state.simpleMapSet);
+  const [errMsg, setErrMsg] = useState("");
 
   return (
     <div>
@@ -16,6 +19,7 @@ export const StructuredCloneMap = () => {
             simpleMapSet(newSimpleMap);
           } catch (e) {
             console.error(e);
+            setErrMsg(String(e));
           }
         }}
       >
@@ -26,6 +30,12 @@ export const StructuredCloneMap = () => {
           🐻 {key}: {value}
         </div>
       ))}
+      <Snackbar
+        message={errMsg}
+        type="error"
+        isOpen={errMsg !== ""}
+        onClose={() => setErrMsg("")}
+      />
     </div>
   );
 };
