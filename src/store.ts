@@ -4,7 +4,7 @@ import { immer } from "zustand/middleware/immer";
 
 type SimpleMap = Map<string, string>;
 
-type State = {
+export type State = {
   simpleMap: SimpleMap;
 };
 
