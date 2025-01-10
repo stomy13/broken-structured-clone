@@ -1,5 +1,3 @@
-// component
-
 import { v7 } from "uuid";
 import { useStore } from "./store";
 
