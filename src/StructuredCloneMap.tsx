@@ -11,9 +11,14 @@ export const StructuredCloneMap = () => {
     <div>
       <button
         onClick={() => {
-          const newSimpleMap = new Map(simpleMap);
-          newSimpleMap.set(String(newSimpleMap.size + 1), v7());
-          simpleMapSet(newSimpleMap);
+          try {
+            // This might throw an error in some conditions
+            const newSimpleMap = structuredClone(simpleMap);
+            newSimpleMap.set(String(newSimpleMap.size + 1), v7());
+            simpleMapSet(newSimpleMap);
+          } catch (e) {
+            console.error(e);
+          }
         }}
       >
         + 1
