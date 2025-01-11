@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Snackbar } from "./SnackBar";
+import { Snackbar } from "./Snackbar";
 import { v7 } from "uuid";
 import { produce } from "immer";
 

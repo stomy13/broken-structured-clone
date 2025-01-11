@@ -1,6 +1,6 @@
 import { v7 } from "uuid";
 import { useStore } from "./store";
-import { Snackbar } from "./SnackBar";
+import { Snackbar } from "./Snackbar";
 import { useState } from "react";
 
 export const StructuredCloneMap = () => {
