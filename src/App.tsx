@@ -3,6 +3,7 @@ import { FrozenMap } from "./FrozenMap";
 import { ImmerOnly } from "./ImmerOnly";
 import { ReactImmer } from "./ReactImmer";
 import { StructuredCloneMap } from "./StructuredCloneMap";
+import { SymbolKeyMap } from "./SymbolKeyMap";
 
 function App() {
 	return (
@@ -11,6 +12,7 @@ function App() {
 			<ReactImmer />
 			<ImmerOnly />
 			<FrozenMap />
+			<SymbolKeyMap />
 		</>
 	);
 }
