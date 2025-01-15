@@ -26,7 +26,7 @@ export const ReactImmer = () => {
 						);
 					} catch (e) {
 						console.error(e);
-						setErrMsg(String(e));
+						setErrMsg(`ReactImmer ${String(e)}`);
 					}
 				}}
 			>

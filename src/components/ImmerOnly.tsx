@@ -26,6 +26,7 @@ export const ImmerOnly = () => {
 		} catch (e) {
 			console.error(e);
 			setErrMsg(String(e));
+			setErrMsg(`ImmerOnly ${String(e)}`);
 		}
 	};
 

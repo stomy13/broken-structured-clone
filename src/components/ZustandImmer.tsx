@@ -20,7 +20,7 @@ export const ZustandImmer = () => {
 						simpleMapSet(newSimpleMap);
 					} catch (e) {
 						console.error(e);
-						setErrMsg(String(e));
+						setErrMsg(`ZustandImmer ${String(e)}`);
 					}
 				}}
 			>
