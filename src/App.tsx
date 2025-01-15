@@ -1,14 +1,14 @@
 import "./App.css";
-import { FrozenMap } from "./FrozenMap";
-import { ImmerOnly } from "./ImmerOnly";
-import { ReactImmer } from "./ReactImmer";
-import { StructuredCloneMap } from "./StructuredCloneMap";
-import { SymbolKeyMap } from "./SymbolKeyMap";
+import { FrozenMap } from "./components/FrozenMap";
+import { ImmerOnly } from "./components/ImmerOnly";
+import { ReactImmer } from "./components/ReactImmer";
+import { SymbolKeyMap } from "./components/SymbolKeyMap";
+import { ZustandImmer } from "./components/ZustandImmer";
 
 function App() {
 	return (
 		<>
-			<StructuredCloneMap />
+			<ZustandImmer />
 			<ReactImmer />
 			<ImmerOnly />
 			<FrozenMap />

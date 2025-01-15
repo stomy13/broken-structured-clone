@@ -3,7 +3,7 @@ import { v7 } from "uuid";
 import { Snackbar } from "./Snackbar";
 import { useStore } from "./store";
 
-export const StructuredCloneMap = () => {
+export const ZustandImmer = () => {
 	const simpleMap = useStore((state) => state.simpleMap);
 	const simpleMapSet = useStore((state) => state.simpleMapSet);
 	const [errMsg, setErrMsg] = useState("");
