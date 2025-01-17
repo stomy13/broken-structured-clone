@@ -12,10 +12,16 @@ export const FrozenMap = () => {
 			logForInvestigation({ simpleMap });
 
 			Object.freeze(simpleMap);
+			// freeze 後も　 Map に設定される
+			simpleMap.set(String(simpleMap.size + 1), v7());
 			logForInvestigation({ simpleMap });
+			structuredClone(simpleMap);
 
-			const newSimpleMap = structuredClone(simpleMap);
-			newSimpleMap.set(String(newSimpleMap.size + 1), v7());
+			// freeze したオブジェクトにメソッドを追加するとその時点でエラーになる
+			// TypeError: Attempting to define property on object that is not extensible. —
+			// simpleMap.set = () => {
+			// 	throw new Error("set is not allowed");
+			// };
 
 			const manualFrozenMap = structuredClone(simpleMap);
 			manualFrozenMap.set(String(manualFrozenMap.size + 1), v7());
@@ -24,7 +30,7 @@ export const FrozenMap = () => {
 			proto.add = () => {
 				throw new Error("add is not allowed");
 			};
-			// オブジェクトにメソッドを追加するとエラーになる
+			// オブジェクトにメソッドを追加すると structuredClone でエラーになる
 			manualFrozenMap.set = () => {
 				throw new Error("set is not allowed");
 			};
