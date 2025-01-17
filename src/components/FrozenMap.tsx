@@ -26,7 +26,7 @@ export const FrozenMap = () => {
 			};
 			// オブジェクトにメソッドを追加するとエラーになる
 			manualFrozenMap.set = () => {
-				throw new Error("add is not allowed");
+				throw new Error("set is not allowed");
 			};
 
 			logForInvestigation({ simpleMap: manualFrozenMap });
