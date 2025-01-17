@@ -3,6 +3,24 @@ import { useState } from "react";
 import { v7 } from "uuid";
 import { Snackbar } from "./Snackbar";
 
+type State = {
+	simpleMap: Map<string, string>;
+};
+
+export const logForInvestigation = (state: State) => {
+	const { simpleMap } = state;
+
+	console.info("state", state);
+	console.info(
+		"Object.getOwnPropertySymbols(simpleMap)",
+		Object.getOwnPropertySymbols(simpleMap),
+	);
+	console.info(
+		"Object.getOwnPropertyDescriptors(simpleMap)",
+		Object.getOwnPropertyDescriptors(simpleMap),
+	);
+};
+
 export const ImmerOnly = () => {
 	const [errMsg, setErrMsg] = useState("");
 
@@ -11,15 +29,16 @@ export const ImmerOnly = () => {
 			const state = {
 				simpleMap: new Map<string, string>([["1", v7()]]),
 			};
+			logForInvestigation(state);
+
 			const newSimpleMap = structuredClone(state.simpleMap);
 			newSimpleMap.set(String(newSimpleMap.size + 1), v7());
 			const immerState = produce(state, (draft) => {
 				draft.simpleMap = newSimpleMap;
 			});
+			logForInvestigation(immerState);
 
 			const { simpleMap: immerSimpleMap } = immerState;
-			// console.log(immerSimpleMap);
-
 			// This throw an error
 			const newSimpleMap2 = structuredClone(immerSimpleMap);
 			newSimpleMap2.set(String(newSimpleMap.size + 1), v7());
@@ -33,7 +52,7 @@ export const ImmerOnly = () => {
 	return (
 		<div>
 			<button type="button" onClick={handleClick}>
-				Immer Only
+				🍎🍎🍎🍎🍎 Immer Only 🍎🍎🍎🍎🍎
 			</button>
 			<Snackbar
 				message={errMsg}

@@ -10,9 +10,9 @@ function App() {
 		<>
 			<ZustandImmer />
 			<ReactImmer />
-			<ImmerOnly />
 			<FrozenMap />
 			<SymbolKeyMap />
+			<ImmerOnly />
 		</>
 	);
 }
