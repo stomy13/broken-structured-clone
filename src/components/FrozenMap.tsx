@@ -19,10 +19,16 @@ export const FrozenMap = () => {
 
 			const manualFrozenMap = structuredClone(simpleMap);
 			manualFrozenMap.set(String(manualFrozenMap.size + 1), v7());
+			// proto に追加してもエラーにならない
 			const proto = Object.getPrototypeOf(manualFrozenMap);
 			proto.add = () => {
 				throw new Error("add is not allowed");
 			};
+			// オブジェクトにメソッドを追加するとエラーになる
+			manualFrozenMap.set = () => {
+				throw new Error("add is not allowed");
+			};
+
 			logForInvestigation({ simpleMap: manualFrozenMap });
 			structuredClone(manualFrozenMap);
 		} catch (e) {
