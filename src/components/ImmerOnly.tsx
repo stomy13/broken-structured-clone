@@ -3,14 +3,12 @@ import { useState } from "react";
 import { v7 } from "uuid";
 import { Snackbar } from "./Snackbar";
 
-type State = {
+export const logForInvestigation = ({
+	simpleMap,
+}: {
 	simpleMap: Map<string, string>;
-};
-
-export const logForInvestigation = (state: State) => {
-	const { simpleMap } = state;
-
-	console.info("state", state);
+}) => {
+	console.info("simpleMap", simpleMap);
 	console.info(
 		"Object.getOwnPropertySymbols(simpleMap)",
 		Object.getOwnPropertySymbols(simpleMap),
@@ -19,6 +17,9 @@ export const logForInvestigation = (state: State) => {
 		"Object.getOwnPropertyDescriptors(simpleMap)",
 		Object.getOwnPropertyDescriptors(simpleMap),
 	);
+	console.info("Object.keys(simpleMap)", Object.keys(simpleMap));
+	console.info("Object.values(simpleMap)", Object.values(simpleMap));
+	console.info("Object.entries(simpleMap)", Object.entries(simpleMap));
 };
 
 export const ImmerOnly = () => {
@@ -29,6 +30,7 @@ export const ImmerOnly = () => {
 			const state = {
 				simpleMap: new Map<string, string>([["1", v7()]]),
 			};
+			console.info("state", state);
 			logForInvestigation(state);
 
 			const newSimpleMap = structuredClone(state.simpleMap);
@@ -36,6 +38,7 @@ export const ImmerOnly = () => {
 			const immerState = produce(state, (draft) => {
 				draft.simpleMap = newSimpleMap;
 			});
+			console.info("immerState", immerState);
 			logForInvestigation(immerState);
 
 			const { simpleMap: immerSimpleMap } = immerState;
