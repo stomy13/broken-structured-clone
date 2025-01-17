@@ -20,6 +20,7 @@ export const logForInvestigation = ({
 	console.info("Object.keys(simpleMap)", Object.keys(simpleMap));
 	console.info("Object.values(simpleMap)", Object.values(simpleMap));
 	console.info("Object.entries(simpleMap)", Object.entries(simpleMap));
+	console.info("simpleMap instanceof Map", simpleMap instanceof Map);
 };
 
 export const ImmerOnly = () => {
