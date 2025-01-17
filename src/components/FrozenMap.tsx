@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v7 } from "uuid";
+import { logForInvestigation } from "./ImmerOnly";
 import { Snackbar } from "./Snackbar";
 
 export const FrozenMap = () => {
@@ -8,7 +9,11 @@ export const FrozenMap = () => {
 	const handleClick = () => {
 		try {
 			const simpleMap = new Map<string, string>([["1", v7()]]);
+			logForInvestigation({ simpleMap });
+
 			Object.freeze(simpleMap);
+			logForInvestigation({ simpleMap });
+
 			const newSimpleMap = structuredClone(simpleMap);
 			newSimpleMap.set(String(newSimpleMap.size + 1), v7());
 		} catch (e) {

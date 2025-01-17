@@ -13,6 +13,7 @@ export const logForInvestigation = ({
 		"Object.getOwnPropertySymbols(simpleMap)",
 		Object.getOwnPropertySymbols(simpleMap),
 	);
+	// produce 適用後の Map のオブジェクトプロパティに add, delete, set, clear のミューテーションメソッドが追加されている。
 	console.info(
 		"Object.getOwnPropertyDescriptors(simpleMap)",
 		Object.getOwnPropertyDescriptors(simpleMap),
