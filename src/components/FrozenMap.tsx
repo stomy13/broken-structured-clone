@@ -16,6 +16,15 @@ export const FrozenMap = () => {
 
 			const newSimpleMap = structuredClone(simpleMap);
 			newSimpleMap.set(String(newSimpleMap.size + 1), v7());
+
+			const manualFrozenMap = structuredClone(simpleMap);
+			manualFrozenMap.set(String(manualFrozenMap.size + 1), v7());
+			const proto = Object.getPrototypeOf(manualFrozenMap);
+			proto.add = () => {
+				throw new Error("add is not allowed");
+			};
+			logForInvestigation({ simpleMap: manualFrozenMap });
+			structuredClone(manualFrozenMap);
 		} catch (e) {
 			console.error(e);
 			setErrMsg(`Frozen Map ${String(e)}`);
